@@ -1,3 +1,16 @@
+.html{
+    font-size:15px
+}
+
+:root{
+    --black: #000000 ;
+    --white:  white;
+}
+
+body{
+    color:(var(--black))
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +27,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
