@@ -1,14 +1,20 @@
-import React from 'react'
-
-import CountriesList from './views/countries-list';
+import React, { lazy, Suspense } from 'react'
+import { Spin } from 'antd'
 
 import './App.css';
 import 'antd/dist/antd.css';
 
+
+const CountriesList = lazy(() => import('./views/countries-list'));
+
+
 function App() {
   return (
     <div className="App">
-      <CountriesList />
+      <Suspense fallback={<Spin />}>
+        <CountriesList />
+      </Suspense>
+
     </div>
   );
 }

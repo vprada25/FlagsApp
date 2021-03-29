@@ -1,10 +1,9 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Countries from '../components/countries'
 
 import '../scss/countries-list.scss'
 
-const Country = lazy(() => import('../components/countries.js'));
 
 
 function CountriesList() {
@@ -25,6 +24,7 @@ function CountriesList() {
     })
     return (
         <div className="Container">
+        
             {
                 CountryList.map(({ name, flag, population, capital, region, nativeName, cioc, alpha2Code }) => {
                     return (
