@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, lazy, Suspense } from 'react'
 
 import Countries from '../components/countries'
+
 import '../scss/countries-list.scss'
+
+const Country = lazy(() => import('../components/countries.js'));
+
 
 function CountriesList() {
     const [CountryList, setCountriesList] = useState([]);
-    
+
     useEffect(() => {
         fetch('https://restcountries.eu/rest/v2/all')
             .then((response) => {
@@ -35,12 +39,9 @@ function CountriesList() {
                             cioc={cioc}
                             alpha2Code={alpha2Code}
                         />
-
                     )
                 })
             }
-
-
         </div>
     )
 
