@@ -1,21 +1,37 @@
 import React, { lazy, Suspense } from 'react'
 import { Spin } from 'antd'
+import { Provider } from 'react-redux';
+import { store } from './store'
+import { Layout } from 'antd';
+
 
 import './App.css';
 import 'antd/dist/antd.css';
 
+const { Header, Footer, Content } = Layout;
 
 const CountriesList = lazy(() => import('./views/countries-list'));
+const Search = lazy(() => import('./components/search.js'))
 
 
 function App() {
   return (
-    <div className="App">
-      <Suspense fallback={<Spin />}>
-        <CountriesList />
-      </Suspense>
+    <Provider store={store}>
+      <div className="App">
 
-    </div>
+        <Suspense fallback={<Spin />}>
+          <Layout>
+            <Header>
+              <Search></Search>
+            </Header>
+            <Content> <CountriesList /></Content>
+            <Footer>Footer</Footer>
+          </Layout>
+
+        </Suspense>
+      </div>
+    </Provider>
+
   );
 }
 

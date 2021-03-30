@@ -1,22 +1,46 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect } from 'react'
 import Countries from '../components/countries'
+import { useSelector, useDispatch } from 'react-redux'
 
 import '../scss/countries-list.scss'
 
 
 
 function CountriesList() {
-    const [CountryList, setCountriesList] = useState([]);
+    const dispatch = useDispatch();
 
+    const countryListByName = useSelector((state) => state.countryListByName)
+
+    const countryList = useSelector((state) => {
+        if (state.filterByRegion !== '' && countryListByName.length === 0) {
+            return state.coutryFilteredByRegion;
+        }
+        if (countryListByName.length > 0) {
+            return countryListByName
+        }
+
+        return state.countryList;
+    })
+
+    console.log('el estado es: ', countryList)
+    /*     const [CountryList, setCountriesList] = useState([]);
+     */
     useEffect(() => {
         fetch('https://restcountries.eu/rest/v2/all')
             .then((response) => {
                 return response.json()
             })
             .then((data) => {
-                setCountriesList(data)
+                dispatch(
+                    {
+                        type: 'SET_COUNTRY_LIST',
+                        payload: data
+
+                    }
+                )
+                /*  setCountriesList(data) */
                 console.log(data)
+
             })
             .catch(() => {
                 console.log('un error carechimba')
@@ -24,9 +48,10 @@ function CountriesList() {
     })
     return (
         <div className="Container">
-        
+
+
             {
-                CountryList.map(({ name, flag, population, capital, region, nativeName, cioc, alpha2Code }) => {
+                countryList.map(({ name, flag, population, capital, region, nativeName, cioc, alpha2Code }) => {
                     return (
                         <Countries
                             flag={flag}
