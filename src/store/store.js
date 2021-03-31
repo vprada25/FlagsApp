@@ -1,12 +1,7 @@
 import { createStore } from 'redux'
 import rootReducer from './rootReducer'
+import { initialState } from './state'
 
-const initialState = {
-    countryList: [],
-  countryListByName: [],
-  coutryFilteredByRegion: [],
-  filterByRegion: '',
-}
 
 export const store = createStore(rootReducer, initialState)
 

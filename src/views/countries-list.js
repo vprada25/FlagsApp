@@ -13,7 +13,7 @@ function CountriesList() {
 
     const countryList = useSelector((state) => {
         if (state.filterByRegion !== '' && countryListByName.length === 0) {
-            return state.coutryFilteredByRegion;
+            return state.countryFilteredByRegion;
         }
         if (countryListByName.length > 0) {
             return countryListByName
@@ -23,8 +23,7 @@ function CountriesList() {
     })
 
     console.log('el estado es: ', countryList)
-    /*     const [CountryList, setCountriesList] = useState([]);
-     */
+    
     useEffect(() => {
         fetch('https://restcountries.eu/rest/v2/all')
             .then((response) => {
@@ -38,7 +37,6 @@ function CountriesList() {
 
                     }
                 )
-                /*  setCountriesList(data) */
                 console.log(data)
 
             })

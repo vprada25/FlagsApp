@@ -7,7 +7,7 @@ export default function rootReducer(state, action) {
         case 'SET_COUNTRY_BY_NAME': {
             let data 
             if (state.filterByRegion !== '') {
-                data = state.coutryFilteredByRegion
+                data = state.countryFilteredByRegion
             } else {
                 data = state.countryList
             }
@@ -20,12 +20,12 @@ export default function rootReducer(state, action) {
             const { regionSelected } = action.payload;
 
             if (regionSelected === '') {
-                return { ...state, coutryFilteredByRegion: [], filterByRegion: '', };
+                return { ...state, countryFilteredByRegion: [], filterByRegion: '', };
             }
 
-            const coutryFilteredByRegion = state.countryList.filter((country) => country.region === regionSelected);
+            const countryFilteredByRegion = state.countryList.filter((country) => country.region === regionSelected);
 
-            return { ...state, coutryFilteredByRegion, filterByRegion: regionSelected }
+            return { ...state, countryFilteredByRegion, filterByRegion: regionSelected }
         }
         default: {
             return state

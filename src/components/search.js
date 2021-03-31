@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 
 
-import { Menu, Button, message, Space, Input, PageHeader, Select } from 'antd';
-import { DownOutlined, EyeOutlined } from '@ant-design/icons';
+import {/*  Menu, Button,  */message, Space, Input, PageHeader, Select } from 'antd';
+/* import { DownOutlined, EyeOutlined } from '@ant-design/icons'; */
 
 import '../scss/search.scss'
 
@@ -89,14 +89,12 @@ export default function Region() {
                         onChange={filterByName}
                         onClick={clearInput}
 
-
-
                     />}
                     subTitle={
                         <Select defaultValue='Region'
                             style={{ width: 120 }}
 
-                           
+
                             onChange={onRegionChange}>
                             <Option value="Africa" >Africa</Option>
                             <Option value="Americas">America</Option>
