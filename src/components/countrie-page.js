@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-export default function CountriePage(match) {
+export default function CountriePage(props) {
     return (
         <div>
-            {match.params.id}
+            {props}
         </div>
     )
 }
